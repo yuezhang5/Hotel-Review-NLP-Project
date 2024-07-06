@@ -16,20 +16,24 @@ Without any restrictions on length: Reviews with a rating of 1 are less than 7k 
 Change the ratings from 1-5 to three categories: 1-2 as Bad, 3 as Neutral, and 4-5 as Good.
 Clean the data in three steps: Remove punctuation from the reviews and convert all characters to lowercase. Remove stopwords from the reviews, e.g., "the," "is," "and." Perform lemmatization on the reviews. Lemmatization links similar meaning words as one word, e.g., "walked," "walk," "walks," "walking" -> "walk."
 After cleaning the reviews, we removed 8.7% of redundant data (Length decreased from 13.55 million to 12.364 million)
-Part 3 Next Steps
+
+### Part 3 Next Steps
 Create word clouds for different rating categories to observe the most frequently occurring words in each type of review, hoping to gain some insights from these words.
 Use the LDA (Latent Dirichlet Allocation) model to create topics for different types of reviews. By examining the topics under different types of reviews, we can understand the reasons for low ratings and use this information to improve in the future. At the same time, we can check the topics under good reviews to maintain these positive aspects in the future.
 
-Part 1 WordCloud
+- Part 1 WordCloud
+  
 Created a word cloud for negative reviews and found some non-English words (nt) among the commonly used words. Further cleaned the data by removing all non-English words.
 Created the word cloud again and found that commonly occurring words include hotel, room, night, service, stay...
 
-Part 2 LDA baseline Model & N - Gram
+- Part 2 LDA baseline Model & N - Gram
+  
 Created a word-level LDA model with three different topics, each composed of five keywords. Each keyword has a certain weight in the topic. Found that commonly occurring words in the topics like "hotel," "resort," and "stay" were not helpful in identifying pain points, so these words were added to the stopword list and further removed.
 Reran the word-level LDA model, and the resulting three topics were: "room, tell, book, check, night" "room, good, bathroom, location, small" "food, room, beach, time, service". Among these, there are few qualitative words, with "small" being the only negative one. The insight gained is that consumers frequently mention "room," "bathroom," "location," and "service," which need further attention.
 Ran a phrase-level LDA model using 3-Gram on the reviews. The resulting three topics revealed pain points: "poor customer service" and "take long time" were frequently mentioned phrases that can be areas for improvement to enhance the customer experience. Positive aspects include "king size bed," "non-smoking room," "staff friendly helpful," and "harbour view room," which should be maintained in the future.
 
-Part 3 LDA & Keyword Extraction
+- Part 3 LDA & Keyword Extraction
+  
 Rake & LDA: Using the Rake technique, the maximum length of keywords in each Rake review was 4. Some Rake reviews had zero keywords. After running the LDA model, three topics were generated, each with ten one-word terms. Many qualitative words were added, for example:
 Positive: nice, better, good, great, best, recommend, beautiful
 Negative: disappoint, horrible, avoid, worst, bad
